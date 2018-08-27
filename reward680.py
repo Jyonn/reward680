@@ -17,7 +17,7 @@ rewards = [[300, '免费出国旅行'], [100, 'AirPods一副'], [3, '奶茶一�
 
 itchat.auto_login(hotReload=True, enableCmdQR=True)
 my_user_name = itchat.search_friends(remarkName='679')[0]['UserName']
-mlc_user_name = itchat.search_friends(remarkName='678')[0]['UserName']
+mlc_user_name = itchat.search_friends(remarkName='680')[0]['UserName']
 
 
 @itchat.msg_register(itchat.content.TEXT)
@@ -72,11 +72,16 @@ def text_redirect(msg):
 
     if msg.FromUserName == mlc_user_name:
         if STATUS == 2:
-            result = int(msg.text)
+            try:
+                result = int(msg.text)
+            except:
+                itchat.send('680回复：%s，无法解析' % msg.text, toUserName=my_user_name)
+                return
             if result == 0:
                 itchat.send('680昨天没打游戏', toUserName=my_user_name)
             else:
                 itchat.send('680昨天打游戏了', toUserName=my_user_name)
+            itchat.send('请回复连续不打游戏的天数[reply]', toUserName=my_user_name)
             STATUS = 3
         else:
             itchat.send(msg.text, toUserName=my_user_name)
@@ -89,6 +94,6 @@ while 1:
     if tm_now.tm_hour < 8:
         STATUS = 0
     elif STATUS == 0:
-        itchat.send('询问680昨天是否打游戏？', toUserName=my_user_name)
+        itchat.send('询问680昨天是否打游戏？[reply]', toUserName=my_user_name)
 
     time.sleep(300)
