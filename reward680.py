@@ -96,4 +96,4 @@ while 1:
     elif STATUS == 0:
         itchat.send('询问680昨天是否打游戏？[reply]', toUserName=my_user_name)
 
-    time.sleep(300)
+    time.sleep(3600)
