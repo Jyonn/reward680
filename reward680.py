@@ -13,7 +13,13 @@ STATUS_TABLE = [
     [4, '我回复连续登陆的数字，转发给680，今日结束'],
 ]
 
-rewards = [[300, '免费出国旅行'], [100, 'AirPods一副'], [3, '奶茶一杯']]
+rewards = [
+    [300, '免费出国旅行一次'],
+    [150, 'AirPods2一副'],
+    [120, '潘多拉手/项链一条'],
+    [100, 'AirPods一副'],
+    [3, '奶茶一杯'],
+]
 
 itchat.auto_login(hotReload=True, enableCmdQR=True)
 my_user_name = itchat.search_friends(remarkName='679')[0]['UserName']
